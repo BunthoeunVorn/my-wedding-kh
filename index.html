@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+
+<title>Bunthoeun & Sina's Wedding Invitation</title>
+
+<meta name="description" content="You are warmly invited to celebrate our wedding on 31 January 2026">
+
+<meta property="og:title" content="Bunthoeun & Sina's Wedding Invitation">
+<meta property="og:description" content="Join us to celebrate our wedding on 31 January 2026">
+<meta property="og:image" content="https://bunthoeunvorn.github.io/my-wedding/previewv2.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bunthoeunvorn.github.io/my-wedding/?invite">
+
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+    }
+
+    /* Button position (UNCHANGED IDEA) */
+    button {
+      margin-top: -50%;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* Countdown overlay (ONLY for Home.png) */
+    .countdown-box {
+      position: absolute;
+      top: 90%;       /* adjust up/down */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #5b4636;
+      display: none;  /* hidden by default */
+    }
+
+    .time {
+      font-family: serif;
+      font-size: 64px;
+      letter-spacing: 5px;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      font-size: 14px;
+      margin-top: 8px;
+      letter-spacing: 2px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .time {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Image container -->
+  <div style="position: relative;">
+
+    <img id="myImage" src="Bunthoeun&Sina's day.png" width="100%">
+    <center>
+    <button
+     id="btnDetail"
+    class="btn btn-outline-light btn-lg"
+     onclick="changeImage()"
+     style="
+    margin-top: -100%;
+    font-size: clamp(40px, 5vw, 88px);
+    font-family: 'Noto Sans Khmer', sans-serif;text-shadow: 2cm;
+    ">
+    ព័ត៌មានលម្អិតបន្ថែម
+</button>
+  </center>
+
+    <img id="myCountDownImage" src="Countdown.png" width="100%" hidden=true>
+    <!-- Countdown (ON Home.png ONLY) -->
+    <div class="countdown-box" id="countdownBox">
+      <div class="time" id="countdown">00 : 00 : 00 : 00</div>
+      <div class="labels">
+        <div>DAYS</div>
+        <div>HOURS</div>
+        <div>MINS</div>
+        <div>SECS</div>
+      </div>
+    </div>
+  </div>
+  <img id="myDetailScheduleImage" src="Detail & Schedule.png" width="100%" hidden=true>
+  <img id="myLocationImage" src="Location.png" width="100%" hidden=true>
+  <center>
+    <button id="btnLocation" class="btn btn-outline-light btn-lg" style="margin-top: -15%; font-size: 5pc; font-family: 'Noto Sans Khmer', sans-serif;" hidden=true>
+      <a href="https://maps.app.goo.gl/V1u3GghNMpv9L9p96" style="color: white;"> ទីតាំងកម្មវីធី </a>
+    </button>
+  </center>
+  <img id="myThanksImage" src="Thank You.png" width="100%" hidden=true>
+
+  <script>
+    /* Keep your button logic */
+    function changeImage() {
+      document.getElementById("btnDetail").hidden = true;
+      document.getElementById("btnLocation").hidden = false;
+      document.getElementById("myCountDownImage").hidden = false;
+      document.getElementById("myDetailScheduleImage").hidden = false;
+      document.getElementById("myLocationImage").hidden = false;
+      document.getElementById("myThanksImage").hidden = false;
+      document.getElementById("myImage").src = "Home.png";
+      document.getElementById("countdownBox").style.display = "block";
+    }
+
+    /* Wedding Countdown */
+    const weddingDate = new Date("2026-01-31T06:30:00").getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "❤️ IT'S TODAY ❤️";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        `${days} : ${hours} : ${mins} : ${secs}`;
+    }, 1000);
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
