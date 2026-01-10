@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head>https://fonts.googleapis.com/css2?family=Moulpali&display=swap
+  <link href="https://fonts.googleapis.com/css2?family=Moulpali&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;600&display=swap" rel="stylesheet">
+
   <meta charset="UTF-8">
 
 <title>Bunthoeun & Sina's Wedding Invitation</title>
 
 <meta name="description" content="You are warmly invited to celebrate our wedding on 31 January 2026">
 
-<meta property="og:title" content="Bunthoeun & Sina's Wedding Invitation">
-<meta property="og:description" content="Join us to celebrate our wedding on 31 January 2026">
-<meta property="og:image" content="https://bunthoeunvorn.github.io/my-wedding/previewv2.png">
+<meta property="og:title" content="សូមគោរពអញ្ជើញពិធីអាពាហ៍ពិពាហ៍">
+<meta property="og:description" content="ដោយក្ដីគោរព សូមអញ្ជើញ ឯកឧត្ដម លោកឧកញ៉ា លោកជំទាវ​ លោក លោកស្រី អ្នកនាង កញ្ញា និងប្រិយមិត្ដទាំងអស់ ចូលរួមក្នុងពិធីអាពាហ៍ពិពាហ៍ នៅថ្ងៃសៅរ៍ ទី៣១ ខែមករា ឆ្នាំ២០២៦">
+<meta property="og:image" content="https://bunthoeunvorn.github.io/my-wedding-kh/previewv2.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://bunthoeunvorn.github.io/my-wedding/?invite">
+<meta property="og:url" content="https://bunthoeunvorn.github.io/my-wedding-kh/?invite">
 
 
 
@@ -44,7 +46,9 @@
     }
 
     .time {
-      font-family: serif;
+      font-family: 'Moulpali', 'Noto Sans Khmer', serif;
+      font-weight: 200;
+      font-style: normal;
       font-size: 64px;
       letter-spacing: 5px;
     }
@@ -52,8 +56,9 @@
     .labels {
       display: flex;
       justify-content: center;
-      gap: 80px;
-      font-size: 14px;
+      gap: 60px;
+      font-size: 23px;
+      font-family: 'Moulpali', 'Noto Sans Khmer', serif;
       margin-top: 8px;
       letter-spacing: 2px;
     }
@@ -64,6 +69,73 @@
         font-size: 40px;
       }
     }
+    /* =====  GLOW BUTTON  ===== */
+    .glow-btn {
+      margin: 100px;
+       padding: 15px 40px;
+       border: none;
+       outline: none;
+       color: #ffffff;
+       cursor: pointer;
+       position: relative;
+       z-index: 5;
+       border-radius: 12px;
+       font-family: 'Moulpali', 'Noto Sans Khmer', serif;
+}
+
+    .glow-btn::after {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #5b4636;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+}
+
+/* glow */
+    .glow-btn::before {
+      content: "";
+     background: linear-gradient(
+      45deg,
+      #FF0000, #FF7300, #FFFB00, #48FF00,
+      #00FFD5, #002BFF, #FF00C8, #FF0000
+  );
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      background-size: 600%;
+      z-index: -1;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      filter: blur(8px);
+      animation: glowing 20s linear infinite;
+      transition: opacity .3s ease-in-out;
+      border-radius: 10px;
+      opacity: 1;
+  }
+
+  .glow-btn:hover::before {
+    opacity: 1;
+   }
+
+  .glow-btn:active:after {
+    background: transparent;
+  }
+
+  .glow-btn:active {
+    color: #f8f8f8;
+    font-weight: bold;
+  }
+
+  @keyframes glowing {
+    0% {background-position: 0 0;}
+    50% {background-position: 400% 0;}
+    100% {background-position: 0 0;}
+}
+
   </style>
 </head>
 
@@ -76,12 +148,14 @@
     <center>
     <button
      id="btnDetail"
-    class="btn btn-outline-light btn-lg"
+    class="btn btn-lg glow-btn"
      onclick="changeImage()"
      style="
-    margin-top: -100%;
+    margin-top: -90%;
     font-size: clamp(40px, 5vw, 88px);
-    font-family: 'Noto Sans Khmer', sans-serif;text-shadow: 2cm;
+    font-weight: 400;
+    font-style: normal;
+    font-family: 'Moulpali', sans-serif;text-shadow: 2cm;
     ">
     ព័ត៌មានលម្អិតបន្ថែម
 </button>
@@ -92,18 +166,19 @@
     <div class="countdown-box" id="countdownBox">
       <div class="time" id="countdown">00 : 00 : 00 : 00</div>
       <div class="labels">
-        <div>DAYS</div>
-        <div>HOURS</div>
-        <div>MINS</div>
-        <div>SECS</div>
+        <div>ថ្ងៃ</div>
+        <div>ម៉ោង</div>
+        <div>នាទី</div>
+        <div>វិនាទី</div>
       </div>
     </div>
   </div>
   <img id="myDetailScheduleImage" src="Detail & Schedule.png" width="100%" hidden=true>
   <img id="myLocationImage" src="Location.png" width="100%" hidden=true>
   <center>
-    <button id="btnLocation" class="btn btn-outline-light btn-lg" style="margin-top: -15%; font-size: 5pc; font-family: 'Noto Sans Khmer', sans-serif;" hidden=true>
-      <a href="https://maps.app.goo.gl/V1u3GghNMpv9L9p96" style="color: white;"> ទីតាំងកម្មវីធី </a>
+    <button id="btnLocation" class="btn btn-lg glow-btn" style="margin-top: -12%; font-size: 2pc; font-family: 'Noto Sans Khmer', sans-serif;" hidden=true>
+      <a href="https://maps.app.goo.gl/V1u3GghNMpv9L9p96" style="color: white;font-size: clamp(30px, 4vw, 78px);
+      font-weight: 300;font-style: normal; font-family: 'Moulpali', sans-serif;"> ទីតាំងកម្មវីធី </a>
     </button>
   </center>
   <img id="myThanksImage" src="Thank You.png" width="100%" hidden=true>
